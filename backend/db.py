@@ -12,7 +12,7 @@ def get_db():
     if _db is None:
         mongo_uri = os.getenv("MONGO_URI", "mongodb://localhost:27017/stylesense")
         _client = MongoClient(mongo_uri)
-        _db = _client.get_database()
+        _db =  _client["stylesense"]
     return _db
 
 def get_collection(name: str):
