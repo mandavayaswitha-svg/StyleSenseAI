@@ -12,7 +12,10 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def _call_groq_with_fallback(messages, temperature=0.7, max_tokens=1500, response_format=None):
     """Call Groq API with prioritized fallback models to handle rate limits or outages."""
-    models = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "qwen/qwen3-32b"]
+    models = [
+    "openai/gpt-oss-120b",
+    "openai/gpt-oss-20b"
+]
     last_err = None
     for model in models:
         try:
