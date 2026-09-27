@@ -133,13 +133,83 @@ CRITICAL STYLING & COMBINATION RULES (MUST FOLLOW STRICTLY):
    - Wedding: Sarees with matching blouses, lehengas, salwar suits, gowns, festive wear.
    - Formal: Structured shirts, trousers, blazers, formal dresses, polished footwear.
 
+# For each outfit:
+# 1. Dynamically infer a suitable styling preference based on the user's age, gender, occasion, and total budget.
+# 2. Select at least one dominant color from the recommended color palette for the main components.
+# 3. Each clothing component must have an estimated cost and a search query.
+# 4. Create highly optimized search queries for each component. The query MUST strictly follow this format:
+#    `{{color}} {{material/fabric or style description}} {{item type}} for {{gender_noun}} under ₹{{component_budget}}` (optionally append occasion/age group details, e.g., 'beige cotton kurti for women under ₹800 for college wear' or 'light grey high waisted skirt for women under ₹900 suitable for young adults').
+#    Use the component's individual allocated budget in the query (under ₹{{component_budget}}), NOT the overall budget.
+
 For each outfit:
-1. Dynamically infer a suitable styling preference based on the user's age, gender, occasion, and total budget.
-2. Select at least one dominant color from the recommended color palette for the main components.
-3. Each clothing component must have an estimated cost and a search query.
-4. Create highly optimized search queries for each component. The query MUST strictly follow this format:
-   `{{color}} {{material/fabric or style description}} {{item type}} for {{gender_noun}} under ₹{{component_budget}}` (optionally append occasion/age group details, e.g., 'beige cotton kurti for women under ₹800 for college wear' or 'light grey high waisted skirt for women under ₹900 suitable for young adults').
-   Use the component's individual allocated budget in the query (under ₹{{component_budget}}), NOT the overall budget.
+
+1. Create a COMPLETE head-to-toe outfit.
+
+2. IMPORTANT: Do NOT make all 3 outfits dresses.
+   - At most ONE of the 3 outfits may be a dress/gown/jumpsuit.
+   - At least TWO outfits MUST use a separate TOP + BOTTOM combination.
+   - Suitable examples:
+     - T-shirt + jeans
+     - Shirt + trousers
+     - Kurti + palazzo
+     - Kurti + leggings
+     - Top + wide-leg pants
+     - Top + midi skirt
+     - Shirt + cargo pants
+     - Polo/T-shirt + chinos
+
+3. EVERY outfit MUST include:
+   - top
+   - bottom
+   - footwear
+   - at least ONE accessory
+
+4. FOOTWEAR IS REQUIRED. Never omit it.
+   Choose footwear appropriate for the occasion, such as:
+   - sandals
+   - chappals
+   - flats
+   - sneakers
+   - loafers
+   - heels
+   - wedges
+   - juttis
+   - kolhapuris
+   - boots when appropriate
+
+5. ACCESSORIES ARE REQUIRED. Include at least ONE useful accessory:
+   - handbag
+   - shoulder bag
+   - watch
+   - belt
+   - sunglasses
+   - earrings
+   - necklace
+   - bracelet
+   - scarf
+   - dupatta
+   - jewellery
+
+6. If the outfit uses a dress, still provide:
+   - footwear
+   - accessories
+   The bottom can be null only for a genuine one-piece dress/gown.
+
+7. For each outfit, dynamically infer a suitable styling preference based on age, gender, occasion, budget and past preferences.
+
+8. Select at least one dominant color from the recommended color palette for the main components.
+
+9. Every clothing, footwear and accessory component must have an estimated cost and search query.
+
+10. The TOTAL cost of all components must be <= the user's total budget.
+
+11. Make the three outfits meaningfully different from each other.
+    Do not return three variations of the same dress.
+
+12. For Indian fashion contexts, consider appropriate footwear such as chappals, sandals, juttis or kolhapuris when suitable.
+
+13. Create highly optimized search queries for every component using this format:
+    `{{color}} {{material/fabric or style description}} {{item type}} for {{gender_noun}} under ₹{{component_budget}}`
 
 Return ONLY a JSON object with this exact structure:
 {{
